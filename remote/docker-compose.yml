@@ -6,18 +6,23 @@ services:
      volumes:
         - db_data:/var/lib/mysql
      restart: always
+     ports:
+       - '3306:3306'
+       - '33060:33060'
+     expose:
+       - '3306'
      environment:
         MYSQL_ROOT_PASSWORD: calimero
         MYSQL_DATABASE: wordpress
         MYSQL_USER: calimero
         MYSQL_PASSWORD: calimero
      container_name: snippet_sql
-     networks:
-        - snippet
+     # networks:
+        # - snippet
 
 volumes:
   db_data:
 
-networks:
-  snippet:
-    driver: bridge
+# networks:
+#   snippet:
+#     driver: bridge
