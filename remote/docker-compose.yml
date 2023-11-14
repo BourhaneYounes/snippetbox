@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+   db_node_domain:
+     image: mysql:5.7
+     volumes:
+        - db_data:/var/lib/mysql
+     restart: always
+     environment:
+        MYSQL_ROOT_PASSWORD: calimero
+        MYSQL_DATABASE: wordpress
+        MYSQL_USER: calimero
+        MYSQL_PASSWORD: calimero
+     container_name: snippet_sql
+     networks:
+        - snippet
+
+volumes:
+  db_data:
+
+networks:
+  snippet:
+    driver: bridge
